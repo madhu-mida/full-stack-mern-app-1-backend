@@ -46,6 +46,14 @@ app.post("/people", async (req, res) => {
     }
 })
 
+app.get("/people/:id", async (req, res) => {
+    try {
+        res.json(await People.findById(req.params.id))
+    } catch (error) {
+        res.status(400).json(error);
+    }
+})
+
 // delete
 app.delete("/people/:id", async (req, res) => {
     try {
